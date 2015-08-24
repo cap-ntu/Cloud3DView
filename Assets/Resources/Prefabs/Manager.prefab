@@ -1,0 +1,93 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &180392
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 480392}
+  - 114: {fileID: 11480392}
+  - 114: {fileID: 11480394}
+  - 114: {fileID: 11480396}
+  m_Layer: 0
+  m_Name: Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &480392
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 180392}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -.87186712, y: -.108058564, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &11480392
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 180392}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c895f891413824b1c947647e542deeb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  modelPosition: {x: 0, y: 0, z: 10}
+--- !u!114 &11480394
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 180392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7091a5696730740cebfb7f6ae5692ad0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  modelPosition: {x: 0, y: 0, z: 0}
+  modelMoveSpeed: .300000012
+  modelRotateSpeed: 5
+  modelZoomSpeed: 5
+  importModelButtonGo: {fileID: 0}
+  viewingCamera: {fileID: 0}
+  inputFieldsContainerGo: {fileID: 0}
+  progressBar: {fileID: 0}
+  modelGo: {fileID: 0}
+--- !u!114 &11480396
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 180392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1f23a9f566424e32a8e4dddf3480af8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manager: {fileID: 11480394}
+  importModelButtonName: Import Model Button
+  closeWindowButtonName: Cancel Button
+  chooseButtonName: Choose Button
+  submitButtonName: Submit Button
+  cancelSubmitButtonName: Cancel Submit Button
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 180392}
+  m_IsPrefabParent: 1
+  m_IsExploded: 1

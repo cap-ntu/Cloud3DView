@@ -1,0 +1,32 @@
+﻿Release Notes
+
+--------------------------------------------------
+v1.0.6
+
+Fixes
+・Node name length allows to 256 bytes from 64 bytes.
+--------------------------------------------------
+v1.0.5
+
+Changes
+・Directory structure
+--------------------------------------------------
+v1.0.4
+
+Fixes
+・Sample scene.
+--------------------------------------------------
+v1.0.3
+
+Fixes
+・Sample scene.
+--------------------------------------------------
+v1.0.2
+
+Improvements
+・FBXSDK version 2014.1　→　2014.2.
+・Algorism of importing animation.
+
+Fixes
+・Fixed an issue with reading material in dxf.
+--------------------------------------------------
