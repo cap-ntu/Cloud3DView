@@ -68,7 +68,7 @@ To View Server Information in Cloud
 ![](https://github.com/weidaxu1988/cloud3dview_cloudshare/raw/master/screenshorts/list_of_server_info_in_cloud.png)
 ![](https://github.com/weidaxu1988/cloud3dview_cloudshare/raw/master/screenshorts/server_info_viewing.png)
 
-## Log out
+## Logout
 To logout the software
 
 1. Click the “Logout” button in main menu.
