@@ -4,10 +4,12 @@ The cloudshare project for cloud3dview (NTU cloudgroup Project) powered by <a hr
 
 ## Contents
 - [Introduction](#introduction)
-- Login  
-- Create Server Information  
-- Manage Your Own Server Information  
-- View Server Information in Cloud  
+- [Login](#login)
+- [Create Server Information](#create-server-information)
+- [Manage Your Own Server Information](#manage-your-own-server-information)
+- [View Server Information in Cloud](#view-server-information-in-cloud)
+- [Logout](#logout)
+- [License](#license)
 
 ## Introduction
 This software is to be used for creating and sharing server information for Cloud3DView, an interactive tool for data center operations.  
