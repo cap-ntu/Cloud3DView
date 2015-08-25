@@ -25,6 +25,9 @@ The login process may take a while.
 1. If login is successful, you will be directed to main menu as shown in Figure 2.  
 2. If login is unsuccessful, there will be a message indicating the reason.  
 
+![](https://github.com/weidaxu1988/cloud3dview_cloudshare/raw/master/screenshorts/login_scene.png)
+![](https://github.com/weidaxu1988/cloud3dview_cloudshare/raw/master/screenshorts/main_menu.png)
+
 ## Create Server Information
 To create your own server information
 
@@ -38,6 +41,10 @@ To create your own server information
 6. An upload progress bar will be shown to indicate the process of uploading the 3D model and the file information.
 7. You will be directed back to the main menu when the upload process is finished.
 
+![](https://github.com/weidaxu1988/cloud3dview_cloudshare/raw/master/screenshorts/file_explorer_window.png)
+![](https://github.com/weidaxu1988/cloud3dview_cloudshare/raw/master/screenshorts/server_info_form.png)
+![](https://github.com/weidaxu1988/cloud3dview_cloudshare/raw/master/screenshorts/upload_progress.png)
+
 ## Manage Your Own Server Information
 To Manage your own server information 
 
@@ -48,12 +55,17 @@ To Manage your own server information
 5. An upload progress bar will be shown to indicate the process of uploading the 3D model and the file information.
 6. You will be directed back to the main menu when the upload process is finished.
 
+![](https://github.com/weidaxu1988/cloud3dview_cloudshare/raw/master/screenshorts/list_of_user's_own_server_info.png)
+
 ## View Server Information in Cloud
 To View Server Information in Cloud
 
 1. Click the “Models in Cloud” button in the main menu.
 2. A list of server information currently in cloud will be shown as shown in Figure 7. Click on any of them to go the step 3. Or click “Back” button to go back to main menu.
 3. A scene displaying the 3D model selected and a server information form will be shown as shown in Figure 8. You can rotate the server model using the left mouse button. You can view the server information as well. You can add the server information into your own collection by clicking “Add To Mine” button. Or click “Back” to go back to step 2.
+
+![](https://github.com/weidaxu1988/cloud3dview_cloudshare/raw/master/screenshorts/list_of_server_info_in_cloud.png)
+![](https://github.com/weidaxu1988/cloud3dview_cloudshare/raw/master/screenshorts/server_info_viewing.png)
 
 ## Log out
 To logout the software
