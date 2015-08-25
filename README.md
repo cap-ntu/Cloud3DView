@@ -1,6 +1,9 @@
 CloudShare for Cloud3DView
 ===========================
-The cloudshare project for cloud3dview (NTU cloudgroup Project) powered by <a href="http://cap.sce.ntu.edu.sg/">CapGroup@NTU</a>
+The **CloudShare** is a open source project built for Sharing 3D ICT models and specifications for **Cloud3DView** powered by <a href="http://cap.sce.ntu.edu.sg/">CapGroup@NTU</a>
+
+**Cloud3DView** application: The app made for data center life-cycle management.  
+[![Get it on Google Play](http://www.android.com/images/brand/get_it_on_play_logo_small.png)](https://play.google.com/store/apps/details?id=com.Cloud3DView.A)
 
 ## Contents
 - [Introduction](#introduction)
