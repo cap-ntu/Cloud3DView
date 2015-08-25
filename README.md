@@ -1,7 +1,7 @@
 cloud3dview_cloudshare
 ===========================
 the cloudshare project for cloud3dview (NTU cloudgroup Project)
-####<a href="">CloudGroup@NTU</a>
+####<a href="">CapGroup@NTU</a>
 
 ## Contents
 - Introduction
