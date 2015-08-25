@@ -1,7 +1,6 @@
-cloud3dview_cloudshare
+CloudShare for Cloud3DView
 ===========================
-the cloudshare project for cloud3dview (NTU cloudgroup Project)
-####<a href="">CapGroup@NTU</a>
+The cloudshare project for cloud3dview (NTU cloudgroup Project) powered by <a href="http://cap.sce.ntu.edu.sg/">CapGroup@NTU</a>
 
 ## Contents
 - Introduction
