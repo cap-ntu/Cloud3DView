@@ -1,0 +1,139 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Cloud3DView</title>
+
+    <link rel="stylesheet" href="/cloud3dview/css/stylesheets/styles.css">
+    <link rel="stylesheet" href="/cloud3dview/css/stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>
+          <a class="post-link" href="/cloud3dview/"> Cloud3DView </a>
+        </h1>
+        <p>Data Center Modeling and Management System</p>
+
+       <!-- <p class="view"><a href="https://github.com/sunpengsdu/unicap">View the Project on GitHub <small>sunpengsdu/unicap</small></a></p>-->
+       <!--
+        <h3>
+        
+          
+            <p class="view">
+              <a class="post-link" href="/cloud3dview/unicap/2015/11/07/install.html">Install UniCAP</a>
+            </p> 
+          
+        
+          
+        
+          
+            <p class="view">
+              <a class="post-link" href="/cloud3dview/unicap/2015/11/07/getting%20started.html">Getting Started</a>
+            </p> 
+          
+        
+          
+            <p class="view">
+              <a class="post-link" href="/cloud3dview/unicap/2015/11/07/example.html">Example</a>
+            </p> 
+          
+        
+          
+        
+        </h3>
+       -->
+
+        <h3>
+        <p class="view">
+          <a class="post-link" target="_blank" href="https://github.com/cap-ntu/Cloud3DView/wiki">Wiki</a>
+        </p> 
+        </h3>
+
+        <h3>
+        <p class="view">
+          <a class="post-link" target="_blank" href="https://github.com/cap-ntu/Cloud3DView/issues">Issues</a>
+        </p> 
+        </h3>
+
+        <ul>
+          <li><a href="https://github.com/cap-ntu/Cloud3DView/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/cap-ntu/Cloud3DView/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/cap-ntu/Cloud3DView">View On <strong>GitHub</strong></a></li>
+        </ul>
+       
+      </header>
+      <section>
+         
+         <h1 id="span-stylecolor-4499ee-examplespan"><span style="color: #4499ee"> Example</span></h1>
+<hr />
+
+<h3 id="span-stylecolor-43a102wordcountspan"><span style="color: #43a102">WordCount</span></h3>
+
+<div align="center">    
+<img src="http://cap-ntu.github.io/UniCAP/img/unicap_wordcount.jpg" width="500" />
+</div>
+
+<blockquote>
+  <p>Define the Vertexes</p>
+</blockquote>
+
+<pre><code>DAG::load_hdfs_file("/dataset/wikipedia_300GB", 
+	"word_count",
+	"data_set",
+	8*1024*1024);
+
+KeyPartition word_count_inter;
+word_count_inter.__set_partition_algo(KeyPartitionAlgo::HashingPartition);
+
+DAG::create_table("word_count_result", 50, word_count_inter);
+
+DAG::create_cf("word_count_result", 
+	"inner_result", 
+	StorageType::InMemoryKeyValue, 
+	ValueType::Int64);
+	
+DAG::create_cf("word_count_result", 
+	"final_result", 
+	StorageType::InMemoryKeyValue, 
+	ValueType::Int64);
+</code></pre>
+
+<blockquote>
+  <p>Define the Edges</p>
+</blockquote>
+
+<pre><code>std::shared_ptr&lt;Stage&gt;stage_map = std::shared_ptr&lt;Stage&gt;(new Stage());
+stage_map-&gt;set_function_name("word_count_map");
+std::vector&lt;std::string&gt; src_cf;
+src_cf.push_back("data_set");
+stage_map-&gt;set_src("word_count", src_cf);
+stage_map-&gt;set_dst("word_count_result", "inner_result");
+Scheduler::singleton().push_back(stage_map);
+
+std::shared_ptr&lt;Stage&gt;stage_reduce = std::shared_ptr&lt;Stage&gt;(new Stage());
+stage_reduce-&gt;set_function_name("word_count_reduce");
+std::vector&lt;std::string&gt; dst_cf;
+dst_cf.push_back("inner_result");
+stage_reduce-&gt;set_src("word_count_result", dst_cf);
+stage_reduce-&gt;set_dst("word_count_result", "final_result");
+Scheduler::singleton().push_back(stage_reduce);
+</code></pre>
+
+
+      </section>
+
+
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/weidaxu1988">Weida Xu</a></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>

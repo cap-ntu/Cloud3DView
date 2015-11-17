@@ -1,0 +1,490 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cloud3DView</title>
+    <description>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+</description>
+    <link>http://yourdomain.com/cloud3dview/</link>
+    <atom:link href="http://yourdomain.com/cloud3dview/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Tue, 17 Nov 2015 11:02:08 +0800</pubDate>
+    <lastBuildDate>Tue, 17 Nov 2015 11:02:08 +0800</lastBuildDate>
+    <generator>Jekyll v2.4.0</generator>
+    
+      <item>
+        <title>Install UniCAP</title>
+        <description>&lt;h1 id=&quot;install-unicap&quot;&gt;Install UniCAP&lt;/h1&gt;
+&lt;p&gt;These are instructions for installing UniCAP.&lt;/p&gt;
+
+&lt;h2 id=&quot;using-docker-image&quot;&gt;Using Docker Image&lt;/h2&gt;
+
+&lt;p&gt;We provide an Docker image with the stable version of UniCAP installed. Users can deploy UniCAP using our Big Data Platform (BDP) directly with the associated Docker image.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://155.69.146.43/bdp/guest&quot;&gt;Using UniCAP in BDP&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;installing-from-source&quot;&gt;Installing From Source&lt;/h2&gt;
+
+&lt;h3 id=&quot;span-stylecolor-greenrequirementsspan&quot;&gt;&lt;span style=&quot;color: Green&quot;&gt;Requirements&lt;/span&gt;&lt;/h3&gt;
+
+&lt;h4 id=&quot;span-stylecolor-bluec-compilerspan&quot;&gt;&lt;span style=&quot;color: blue&quot;&gt;C++ Compiler&lt;/span&gt;&lt;/h4&gt;
+
+&lt;p&gt;UniCAP needs a C++ compiler supporting c++11, such as gcc &amp;gt;= 4.7.2 (prefer &amp;gt;= 4.8) or llvm &amp;gt;= 3.4. You can update gcc via either downloading packages, or building from source. &lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;1) Ubuntu 12.04&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo apt-get install python-software-properties
+sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+sudo apt-get update
+sudo apt-get install gcc-4.8 g++-4.8
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin gcc-4.8 50
+sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin g++-4.8 50
+sudo update-alternatives --config gcc
+sudo update-alternatives --config g++
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;After that, check the gcc version via:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;gcc --version
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;2) Ubuntu 14.04&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Ubuntu 14.04 contains gcc-4.8 in its system software system. 
+Check the gcc version:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;gcc --version 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h4 id=&quot;span-stylecolor-blueboost-libraryspan&quot;&gt;&lt;span style=&quot;color: blue&quot;&gt;Boost Library&lt;/span&gt;&lt;/h4&gt;
+
+&lt;p&gt;UniCAP needs boost library &amp;gt;= 1.54 (prefer &amp;gt;= 1.55). &lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;1) Ubuntu 12.04&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;You can install boost via ppa in ubuntu 12.04:&lt;/p&gt;
+
+&lt;p&gt;Add ppa:boost-latest/ppa to your system’s software sources based on the instructions in &lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://launchpad.net/~boost-latest/+archive/ubuntu/ppa&quot;&gt;https://launchpad.net/~boost-latest/+archive/ubuntu/ppa&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Update your system’s software sources:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo apt-get update
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Install boost 1.55:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo apt-get install libboost1.55-all-dev
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;2) Ubuntu 14.04&lt;/strong&gt;   &lt;/p&gt;
+
+&lt;p&gt;Ubuntu 14.04 contains boost1.55&lt;/p&gt;
+
+ 	sudo apt-get install libboost1.55-all-dev
+
+&lt;hr /&gt;
+
+&lt;h4 id=&quot;span-stylecolor-bluethriftspan&quot;&gt;&lt;span style=&quot;color: blue&quot;&gt;Thrift&lt;/span&gt;&lt;/h4&gt;
+
+&lt;p&gt;1) Install thrift dependencies:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo apt-get install libevent-dev automake libtool
+sudo apt-get install flex bison pkg-config libssl-dev  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;2) Install thrift from source &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;wget http://mirror.nus.edu.sg/apache/thrift/0.9.2/thrift-0.9.2.tar.gz
+tar zxvf thrift-0.9.2.tar.gz
+cd thrift-0.9.2
+./configure --without-java --without-go
+make
+sudo make install
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h4 id=&quot;span-stylecolor-blueglog-and-gflagsspan&quot;&gt;&lt;span style=&quot;color: blue&quot;&gt;Glog and Gflags&lt;/span&gt;&lt;/h4&gt;
+
+&lt;p&gt;UniCAP uses glog and gflags to print log data.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;1) Ubuntu 12.04&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Install Glog&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;wget https://google-glog.googlecode.com/files/glog-0.3.3.tar.gz
+tar zxvf glog-0.3.3.tar.gz
+cd glog-0.3.3
+./configure
+make
+sudo make install
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Install Gflags&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;wget https://github.com/schuhschuh/gflags/archive/master.zip
+unzip master.zip
+cd gflags-master
+mkdir build &amp;amp;&amp;amp; cd build
+export CXXFLAGS=&quot;-fPIC&quot; &amp;amp;&amp;amp; cmake .. &amp;amp;&amp;amp; make VERBOSE=1
+make
+sudo make install
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;2) Ubuntu 14.04&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;sudo apt-get install libgflags-dev libgoogle-glog-dev&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h4 id=&quot;span-stylecolor-blueleveldbspan&quot;&gt;&lt;span style=&quot;color: blue&quot;&gt;LevelDB&lt;/span&gt;&lt;/h4&gt;
+
+&lt;p&gt;UniCAP uses LevelDB as one of its storage systems.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo apt-get install libleveldb-dev libsnappy-dev
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h4 id=&quot;span-stylecolor-blueopencv2span&quot;&gt;&lt;span style=&quot;color: blue&quot;&gt;OpenCV2&lt;/span&gt;&lt;/h4&gt;
+
+&lt;p&gt;UniCAP uses OpenCV2 run image related applications.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;wget https://github.com/Itseez/opencv/archive/2.4.11.zip
+unzip 2.4.11.zip
+./configure
+make 
+sudo make install ---
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;span-stylecolor-bluempispan&quot;&gt;&lt;span style=&quot;color: blue&quot;&gt;MPI&lt;/span&gt;&lt;/h4&gt;
+
+&lt;p&gt;UniCAP uses MPI to parallel the application.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo apt-get install libopenmpi-dev openmpi-bin openmpi-common openmpi-doc
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h4 id=&quot;span-stylecolor-bluehdfsspan&quot;&gt;&lt;span style=&quot;color: blue&quot;&gt;HDFS&lt;/span&gt;&lt;/h4&gt;
+
+&lt;p&gt;To work with Hadoop Distributed File System using C++, there are two choices:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;1) libhdfs3&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Libhdfs3 a native c/c++ hdfs client (there is no need to use Java to work with HDFS in application layer).&lt;/p&gt;
+
+&lt;p&gt;Refer to &lt;a href=&quot;https://github.com/PivotalRD/libhdfs3&quot;&gt;https://github.com/PivotalRD/libhdfs3&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;To compile libhdfs3, users need following libraries:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo apt-get install protobuf-compiler  libprotobuf-dev 
+sudo apt-get install libkrb5-dev libxml2-dev libuuid1 uuid-dev 
+sudo apt-get install libgsasl7 libgsasl7-dev 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;2) libhdfs&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Libhdfs is a JNI based C api for Hadoop’s DFS. It provides a simple subset of C apis to manipulate DFS files and the filesystem. &lt;/p&gt;
+
+&lt;p&gt;Clients should compile libhdfs based on their HDFS version in use. To work with JNI, there are some modifications in system:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;vi /etc/ld.so.conf.d/java.conf
+
+append following configurations:
+
+/opt/jdk1.7.0_75/jre/lib/amd64
+/opt/jdk1.7.0_75/jre/lib/amd64/server
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Sometimes, the JNI-based application cannot find the needed jar packets for HDFS operations. Using following commands to generate a shell script, run it at the start up of the application:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;find /usr/lib/hadoop -name *.jar|awk &#39;{ printf(&quot;export CLASSPATH=%s:$CLASSPATH\n&quot;, $0); }&#39; &amp;gt;&amp;gt; hdfs_jni.sh
+find /usr/lib/hadoop/lib -name *.jar|awk &#39;{ printf(&quot;export CLASSPATH=%s:$CLASSPATH\n&quot;, $0); }&#39; &amp;gt;&amp;gt; hdfs_jni.sh
+find /usr/lib/hadoop-hdfs/ -name *.jar|awk &#39;{ printf(&quot;export CLASSPATH=%s:$CLASSPATH\n&quot;, $0); }&#39; &amp;gt;&amp;gt; hdfs_jni.sh
+find /usr/lib/hadoop-hdfs/lib/ -name *.jar|awk &#39;{ printf(&quot;export CLASSPATH=%s:$CLASSPATH\n&quot;, $0); }&#39; &amp;gt;&amp;gt; hdfs_jni.sh
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;span-stylecolor-greencompile-unicapspan&quot;&gt;&lt;span style=&quot;color: Green&quot;&gt;Compile UniCAP&lt;/span&gt;&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;git clone https://github.com/sunpengsdu/unicap
+cd unicap/build
+cmake ..
+make -j8
+&lt;/code&gt;&lt;/pre&gt;
+
+</description>
+        <pubDate>Sat, 07 Nov 2015 00:00:00 +0800</pubDate>
+        <link>http://yourdomain.com/cloud3dview/unicap/2015/11/07/install.html</link>
+        <guid isPermaLink="true">http://yourdomain.com/cloud3dview/unicap/2015/11/07/install.html</guid>
+        
+        
+        <category>unicap</category>
+        
+      </item>
+    
+      <item>
+        <title>index</title>
+        <description>&lt;h1 id=&quot;span-stylecolor-4499eecloudshare-for-cloud3dviewspan&quot;&gt;&lt;span style=&quot;color: #4499ee&quot;&gt;CloudShare for Cloud3DView&lt;/span&gt;&lt;/h1&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;The &lt;strong&gt;CloudShare&lt;/strong&gt; is a open source project built for Sharing 3D ICT models and specifications for &lt;strong&gt;Cloud3DView&lt;/strong&gt; powered by &lt;a href=&quot;http://cap.sce.ntu.edu.sg/&quot;&gt;CapGroup@NTU&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Cloud3DView&lt;/strong&gt; application: The app made for data center life-cycle management.&lt;br /&gt;
+&lt;a href=&quot;https://play.google.com/store/apps/details?id=com.Cloud3DView.A&quot;&gt;&lt;img src=&quot;http://www.android.com/images/brand/get_it_on_play_logo_small.png&quot; alt=&quot;Get it on Google Play&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;contents&quot;&gt;Contents&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;#introduction&quot;&gt;Introduction&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#login&quot;&gt;Login&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#create-server-information&quot;&gt;Create Server Information&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#manage-your-own-server-information&quot;&gt;Manage Your Own Server Information&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#view-server-information-in-cloud&quot;&gt;View Server Information in Cloud&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#logout&quot;&gt;Logout&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#license&quot;&gt;License&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;This software is to be used for creating and sharing server information for Cloud3DView, an interactive tool for data center operations.&lt;br /&gt;
+This document will guide you through the day-to-day use of this software, including server information creation, management, and sharing.&lt;/p&gt;
+
+&lt;h2 id=&quot;login&quot;&gt;Login&lt;/h2&gt;
+&lt;p&gt;After launching the software, the first thing you need to do is to login the system with your username and password.  &lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;You can enter your username and password in the indicated text field as shown in Figure 1.  &lt;/li&gt;
+  &lt;li&gt;Click the “Login” button to login.  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;The login process may take a while. &lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;If login is successful, you will be directed to main menu as shown in Figure 2.  &lt;/li&gt;
+  &lt;li&gt;If login is unsuccessful, there will be a message indicating the reason.  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://github.com/weidaxu1988/cloud3dview_cloudshare/raw/master/screenshorts/login_scene.png&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;https://github.com/weidaxu1988/cloud3dview_cloudshare/raw/master/screenshorts/main_menu.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;create-server-information&quot;&gt;Create Server Information&lt;/h2&gt;
+&lt;p&gt;To create your own server information&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Click the “Upload Server” button in the main menu as shown in Figure 2.&lt;/li&gt;
+  &lt;li&gt;A file explorer window will pop up for you to choose a 3D model file of the server as shown in Figure 3. The following model formats are allowed:
+    &lt;ul&gt;
+      &lt;li&gt;.FBX&lt;/li&gt;
+      &lt;li&gt;.OBJ&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Use mouse to select the file to choose.&lt;/li&gt;
+  &lt;li&gt;Select “Choose” button to go to step 5. Or select “Close” to close the file explorer window to go back to main menu.&lt;/li&gt;
+  &lt;li&gt;A scene displaying the 3D model selected and a server information form will be shown as shown in Figure 4. You can rotate the server model using the left mouse button. You also need to fill in the server information form. Click “Submit” button to submit the 3D model and the server information to cloud. Or select “Back” button to go back to step 2.&lt;/li&gt;
+  &lt;li&gt;An upload progress bar will be shown to indicate the process of uploading the 3D model and the file information.&lt;/li&gt;
+  &lt;li&gt;You will be directed back to the main menu when the upload process is finished.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://github.com/weidaxu1988/cloud3dview_cloudshare/raw/master/screenshorts/file_explorer_window.png&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;https://github.com/weidaxu1988/cloud3dview_cloudshare/raw/master/screenshorts/server_info_form.png&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;https://github.com/weidaxu1988/cloud3dview_cloudshare/raw/master/screenshorts/upload_progress.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;manage-your-own-server-information&quot;&gt;Manage Your Own Server Information&lt;/h2&gt;
+&lt;p&gt;To Manage your own server information &lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Click the “Manage Models” button in the main menu.&lt;/li&gt;
+  &lt;li&gt;A list of your server information will be shown as shown in Figure 6. Click on any of them to go the step 3. Or click “Back” button to go back to main menu.&lt;/li&gt;
+  &lt;li&gt;A scene displaying the 3D model selected and a server information form will be shown as shown in Figure 4. You can rotate the server model using the left mouse button. You can view and edit the server information as well.&lt;/li&gt;
+  &lt;li&gt;Click “Submit” button to update the 3D model and the server information in cloud. Or select “Back” button to go back to step 2.&lt;/li&gt;
+  &lt;li&gt;An upload progress bar will be shown to indicate the process of uploading the 3D model and the file information.&lt;/li&gt;
+  &lt;li&gt;You will be directed back to the main menu when the upload process is finished.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://github.com/weidaxu1988/cloud3dview_cloudshare/raw/master/screenshorts/list_of_user&#39;s_own_server_info.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;view-server-information-in-cloud&quot;&gt;View Server Information in Cloud&lt;/h2&gt;
+&lt;p&gt;To View Server Information in Cloud&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Click the “Models in Cloud” button in the main menu.&lt;/li&gt;
+  &lt;li&gt;A list of server information currently in cloud will be shown as shown in Figure 7. Click on any of them to go the step 3. Or click “Back” button to go back to main menu.&lt;/li&gt;
+  &lt;li&gt;A scene displaying the 3D model selected and a server information form will be shown as shown in Figure 8. You can rotate the server model using the left mouse button. You can view the server information as well. You can add the server information into your own collection by clicking “Add To Mine” button. Or click “Back” to go back to step 2.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://github.com/weidaxu1988/cloud3dview_cloudshare/raw/master/screenshorts/list_of_server_info_in_cloud.png&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;https://github.com/weidaxu1988/cloud3dview_cloudshare/raw/master/screenshorts/server_info_viewing.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;logout&quot;&gt;Logout&lt;/h2&gt;
+&lt;p&gt;To logout the software&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Click the “Logout” button in main menu.&lt;/li&gt;
+  &lt;li&gt;You will be directed to Login scene.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;license&quot;&gt;License&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;Copyright 2015 NTU (http://www.ntu.edu.sg/)
+
+Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        <pubDate>Sat, 07 Nov 2015 00:00:00 +0800</pubDate>
+        <link>http://yourdomain.com/cloud3dview/cloud3dview/2015/11/07/index.html</link>
+        <guid isPermaLink="true">http://yourdomain.com/cloud3dview/cloud3dview/2015/11/07/index.html</guid>
+        
+        
+        <category>cloud3dview</category>
+        
+      </item>
+    
+      <item>
+        <title>Getting Started</title>
+        <description>&lt;h1 id=&quot;span-stylecolor-4499eegetting-startedspan&quot;&gt;&lt;span style=&quot;color: #4499ee&quot;&gt;Getting Started&lt;/span&gt;&lt;/h1&gt;
+&lt;hr /&gt;
+
+&lt;div align=&quot;center&quot;&gt;    
+&lt;img src=&quot;http://cap-ntu.github.io/UniCAP/img/unicap_start.jpg&quot; width=&quot;400&quot; /&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;span-stylecolor-43a102define-the-vertexspan&quot;&gt;&lt;span style=&quot;color: #43a102&quot;&gt;Define the Vertex&lt;/span&gt;&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;ntu::cap::DAG::create_table (table_name, shard_num, partition_algo)
+ntu::cap::DAG::create_cf&amp;lt;T&amp;gt; (table_name, cf_name, cf_type)
+ntu::cap::DAG::load_from_hdfs (hdfs_path, table_name, cf_name)
+ntu::cap::DAG::load_local_file (local_path, table_name, cf_name)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;span-stylecolor-43a102define-the-edge-inputoutput-pathspan&quot;&gt;&lt;span style=&quot;color: #43a102&quot;&gt;Define the Edge (Input/Output Path)&lt;/span&gt;&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;ntu::cap::Storage::vector_put&amp;lt;T&amp;gt; 
+ntu::cap::Storage::vector_get&amp;lt;T&amp;gt;
+ntu::cap::Storage::scan&amp;lt;T&amp;gt;
+ntu::cap::Storage::timed_put&amp;lt;T&amp;gt; 
+ntu::cap::Storage::timed_scan&amp;lt;T&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;span-stylecolor-43a102define-the-edge-computing-functionsspan&quot;&gt;&lt;span style=&quot;color: #43a102&quot;&gt;Define the Edge (Computing Functions)&lt;/span&gt;&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;class UCPUFunctions : public CPUFunctions {
+public:
+    static UCPUFunctions&amp;amp; singleton() {
+        static UCPUFunctions u_cpu_function;
+        return u_cpu_function;
+    }
+
+    UCPUFunctions() : CPUFunctions() {
+        CPUFunctions::_cpu_functions_p[&quot;User_functions&quot;] = hello_world;
+    }
+
+    static int64_t User_functions (TaskNode new_task) {
+        //User implementation
+        return 1;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        <pubDate>Sat, 07 Nov 2015 00:00:00 +0800</pubDate>
+        <link>http://yourdomain.com/cloud3dview/unicap/2015/11/07/getting%20started.html</link>
+        <guid isPermaLink="true">http://yourdomain.com/cloud3dview/unicap/2015/11/07/getting%20started.html</guid>
+        
+        
+        <category>unicap</category>
+        
+      </item>
+    
+      <item>
+        <title>Example</title>
+        <description>&lt;h1 id=&quot;span-stylecolor-4499ee-examplespan&quot;&gt;&lt;span style=&quot;color: #4499ee&quot;&gt; Example&lt;/span&gt;&lt;/h1&gt;
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;span-stylecolor-43a102wordcountspan&quot;&gt;&lt;span style=&quot;color: #43a102&quot;&gt;WordCount&lt;/span&gt;&lt;/h3&gt;
+
+&lt;div align=&quot;center&quot;&gt;    
+&lt;img src=&quot;http://cap-ntu.github.io/UniCAP/img/unicap_wordcount.jpg&quot; width=&quot;500&quot; /&gt;
+&lt;/div&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Define the Vertexes&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code&gt;DAG::load_hdfs_file(&quot;/dataset/wikipedia_300GB&quot;, 
+	&quot;word_count&quot;,
+	&quot;data_set&quot;,
+	8*1024*1024);
+
+KeyPartition word_count_inter;
+word_count_inter.__set_partition_algo(KeyPartitionAlgo::HashingPartition);
+
+DAG::create_table(&quot;word_count_result&quot;, 50, word_count_inter);
+
+DAG::create_cf(&quot;word_count_result&quot;, 
+	&quot;inner_result&quot;, 
+	StorageType::InMemoryKeyValue, 
+	ValueType::Int64);
+	
+DAG::create_cf(&quot;word_count_result&quot;, 
+	&quot;final_result&quot;, 
+	StorageType::InMemoryKeyValue, 
+	ValueType::Int64);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Define the Edges&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code&gt;std::shared_ptr&amp;lt;Stage&amp;gt;stage_map = std::shared_ptr&amp;lt;Stage&amp;gt;(new Stage());
+stage_map-&amp;gt;set_function_name(&quot;word_count_map&quot;);
+std::vector&amp;lt;std::string&amp;gt; src_cf;
+src_cf.push_back(&quot;data_set&quot;);
+stage_map-&amp;gt;set_src(&quot;word_count&quot;, src_cf);
+stage_map-&amp;gt;set_dst(&quot;word_count_result&quot;, &quot;inner_result&quot;);
+Scheduler::singleton().push_back(stage_map);
+
+std::shared_ptr&amp;lt;Stage&amp;gt;stage_reduce = std::shared_ptr&amp;lt;Stage&amp;gt;(new Stage());
+stage_reduce-&amp;gt;set_function_name(&quot;word_count_reduce&quot;);
+std::vector&amp;lt;std::string&amp;gt; dst_cf;
+dst_cf.push_back(&quot;inner_result&quot;);
+stage_reduce-&amp;gt;set_src(&quot;word_count_result&quot;, dst_cf);
+stage_reduce-&amp;gt;set_dst(&quot;word_count_result&quot;, &quot;final_result&quot;);
+Scheduler::singleton().push_back(stage_reduce);
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        <pubDate>Sat, 07 Nov 2015 00:00:00 +0800</pubDate>
+        <link>http://yourdomain.com/cloud3dview/unicap/2015/11/07/example.html</link>
+        <guid isPermaLink="true">http://yourdomain.com/cloud3dview/unicap/2015/11/07/example.html</guid>
+        
+        
+        <category>unicap</category>
+        
+      </item>
+    
+      <item>
+        <title>Deveop</title>
+        <description>&lt;p&gt;TO DO&lt;/p&gt;
+</description>
+        <pubDate>Sat, 07 Nov 2015 00:00:00 +0800</pubDate>
+        <link>http://yourdomain.com/cloud3dview/unicap/2015/11/07/%20document.html</link>
+        <guid isPermaLink="true">http://yourdomain.com/cloud3dview/unicap/2015/11/07/%20document.html</guid>
+        
+        
+        <category>unicap</category>
+        
+      </item>
+    
+  </channel>
+</rss>

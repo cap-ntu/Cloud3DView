@@ -1,0 +1,56 @@
+---
+layout: post
+title:  "Example"
+categories: unicap
+---
+#<span style="color: #4499ee"> Example</span> 
+---
+
+
+###<span style="color: #43a102">WordCount</span>
+
+<div  align="center">    
+<img src="http://cap-ntu.github.io/UniCAP/img/unicap_wordcount.jpg" width="500" />
+</div>
+
+> Define the Vertexes
+
+
+    DAG::load_hdfs_file("/dataset/wikipedia_300GB", 
+    	"word_count",
+		"data_set",
+		8*1024*1024);
+
+    KeyPartition word_count_inter;
+    word_count_inter.__set_partition_algo(KeyPartitionAlgo::HashingPartition);
+    
+    DAG::create_table("word_count_result", 50, word_count_inter);
+    
+    DAG::create_cf("word_count_result", 
+    	"inner_result", 
+    	StorageType::InMemoryKeyValue, 
+    	ValueType::Int64);
+    	
+    DAG::create_cf("word_count_result", 
+    	"final_result", 
+    	StorageType::InMemoryKeyValue, 
+    	ValueType::Int64);
+    	
+> Define the Edges
+
+
+    std::shared_ptr<Stage>stage_map = std::shared_ptr<Stage>(new Stage());
+    stage_map->set_function_name("word_count_map");
+    std::vector<std::string> src_cf;
+    src_cf.push_back("data_set");
+    stage_map->set_src("word_count", src_cf);
+    stage_map->set_dst("word_count_result", "inner_result");
+    Scheduler::singleton().push_back(stage_map);
+
+    std::shared_ptr<Stage>stage_reduce = std::shared_ptr<Stage>(new Stage());
+    stage_reduce->set_function_name("word_count_reduce");
+    std::vector<std::string> dst_cf;
+    dst_cf.push_back("inner_result");
+    stage_reduce->set_src("word_count_result", dst_cf);
+    stage_reduce->set_dst("word_count_result", "final_result");
+    Scheduler::singleton().push_back(stage_reduce);
